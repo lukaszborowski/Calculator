@@ -5,9 +5,74 @@
 }
 
 .calculator--container {
+  height: 35em;
   width: 30%;
   margin: 2em auto;
   display: grid;
-  grid-template-rows: repeat(6, 16%);
-  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: 25% repeat(5, 15%);
+  grid-template-columns: repeat(3, 25%);
+  grid-gap: 2px;
+  color: $fontColor;
+  background-color: $backColor;
+  box-shadow: $boxShadow;
+  border-radius: 15px;
+
+
+}
+
+.display--screen {
+  grid-column-start: 1;
+  grid-column-end: span col3-end;
+  grid-row-start: 1;
+  grid-row-end: span 1;
+  background-color: $displayColor;
+  padding: 10px 10px 10px 10px;
+  font-size: 6em;
+  text-align: right;
+  margin-bottom: 5px;
+  border-radius: 15px;
+  box-shadow: $boxShadow;
+
+
+}
+
+.calc--button {
+  grid-column-start: 4;
+  grid-column-end: span col3-end;
+  box-shadow: $boxShadow;
+}
+
+.square--button, .calc--button {
+  font-size: 2.7em;
+  border-radius: 10px;
+  text-align: center;
+  padding: 5px 5px 5px 5px;
+  cursor: pointer;
+  color: $fontColor;
+  box-shadow: $boxShadow;
+  &:hover {
+    background-color: #83899F;
+  }
+  &:focus {
+    color: #83899F;  // #050609
+  }
+
+}
+
+.func--button, .math--button, .calc--button {
+  background-color: $actionColor;
+  box-shadow: $boxShadow;
+  &:hover {
+    background-color: #FF8458;
+  }
+}
+
+.number--button {
+  background-color: $buttonColor;
+  box-shadow: $boxShadow;
+  &:nth-child(18){
+    grid-column-start: 1;
+    grid-column-end: span 2;
+
+  }
 }

@@ -11,6 +11,13 @@ const Calculator = () => {
 
         const Display = () => {
 
+
+                return (
+                    <div className="display--screen">
+                            {!activeInput.length && !storedInput ? '0' : activeInput || storedInput }
+                    </div>
+                )
+
         };
 
         const NumberButton = ({ buttonValue }) => {
@@ -148,8 +155,8 @@ const Calculator = () => {
             <NumberButton buttonValue = { 2 } />
             <NumberButton buttonValue = { 3 } />
             <MathButton buttonValue = "-" />
-            <NumberButton buttonValue = "." />
             <NumberButton buttonValue = { 0 } />
+            <NumberButton buttonValue = "." />
             <CalcButton />
 
         </div>
