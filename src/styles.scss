@@ -1,0 +1,13 @@
+@import "sass/variables.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+.calculator--container {
+  width: 30%;
+  margin: 2em auto;
+  display: grid;
+  grid-template-rows: repeat(6, 16%);
+  grid-template-columns: repeat(4, 25%);
+}
