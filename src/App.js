@@ -2,61 +2,53 @@ import React, { Component, useState } from "react";
 import './App.css';
 import "./styles.scss";
 
+const calculatorRowsTable = ["*",7,8,9,"/",4,5,6,"+",1,2,3,"-",0,"."]
+
 
 const Calculator = () => {
         const [ activeInput, setActiveInput ] = useState('');
         const [ storedInput, setStoredInput ] = useState('');
         const [ whichCalc, setWhichCalc ] = useState('');
 
-
         const Display = () => {
-
-
                 return (
                     <div className="display--screen">
                             {!activeInput.length && !storedInput ? '0' : activeInput || storedInput }
                     </div>
                 )
-
         };
 
         const NumberButton = ({ buttonValue }) => {
-
                 return (
                     <button className="square--button number--button" type="button" onClick={() => handleActiveInput(buttonValue)}>{buttonValue}</button>
                 )
         };
 
         const ClearButton = () => {
-
                 return (
                     <button className="square--button func--button" type="button" onClick={() => handleClear()}>C</button>
                 )
         };
 
         const UndoButton = () => {
-
                 return (
                     <button className="square--button func--button" type="button" onClick={() => handleUndo()}>&#8592;</button>
                 )
         };
 
         const NegativeButton = () => {
-
                 return (
                     <button className="square--button func--button" type="button" onClick={() => handleToggleNegative()}>+/-</button>
                 )
         };
 
         const MathButton = ({ buttonValue }) => {
-
                 return (
                     <button className="square--button math--button" type="button" onClick={() => handleMathSet(buttonValue)}>{ buttonValue }</button>
                 )
         };
 
         const CalcButton = () => {
-
                 return (
                     <button className="calc--button" type="button" onClick={() => handleCalculate()}>=</button>
                 )
@@ -133,38 +125,23 @@ const Calculator = () => {
                         setStoredInput(plusStored)
                 }
         };
-
-
-    return(
+   
+return(
         <div className="calculator--container">
-
             <Display />
             <ClearButton />
             <UndoButton />
             <NegativeButton />
-            <MathButton buttonValue = "*" />
-            <NumberButton buttonValue = { 7 } />
-            <NumberButton buttonValue = { 8 } />
-            <NumberButton buttonValue = { 9 } />
-            <MathButton buttonValue = "/" />
-            <NumberButton buttonValue = { 4 } />
-            <NumberButton buttonValue = { 5 } />
-            <NumberButton buttonValue = { 6 } />
-            <MathButton buttonValue = "+" />
-            <NumberButton buttonValue = { 1 } />
-            <NumberButton buttonValue = { 2 } />
-            <NumberButton buttonValue = { 3 } />
-            <MathButton buttonValue = "-" />
-            <NumberButton buttonValue = { 0 } />
-            <NumberButton buttonValue = "." />
+            {calculatorRowsTable.map((element, index) => (
+                    typeof(element) === 'string' ?  <MathButton key={index} buttonValue={element} /> :  <NumberButton key={index} buttonValue = { element } />
+                ))
+            }
             <CalcButton />
-
         </div>
     )
 };
 
 class App extends Component {
-
         render() {
                 return (
                     <Calculator/>
